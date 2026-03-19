@@ -20,7 +20,7 @@ $\Omega={\omega_{1},\omega_{2},\dots,\omega_{n}}$
 当$\Omega$是有限集或可数集, $\Omega$的所有可能的子集都是事件
 
 当$\Omega=\mathbb{R}或\mathbb{R}^n$, 此时若把$\Omega$所有子集都可以充当事件会出现大麻烦. 那这个麻烦是什么呢? 
-(随便写点: $|\Omega|=\aleph_0$, 而$\Omega$的幂集的"长度"为$2^{\aleph_0}$)
+(随便写点: $|\Omega|=2^{\aleph_0}$)
 
 定义, $\Omega$为样本空间, 其中$A,B \subseteq \Omega$
 1. $A \subseteq B$, 表示事件A必然导致事件B
