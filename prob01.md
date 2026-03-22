@@ -98,3 +98,68 @@ $\overline{\cap_{n=1}^{\infty}A_{n}}=\cup_{n=1}^{\infty}\bar{A_{n}}$
 		问题: $\mathcal{F}$中的集合长什么样? ---> 描述集合论
 - $\mathcal{F}$ 是一个最小事件域	
 	这称作$\mathbb{R}$的Borel代数
+	
+## 概率的定义及其确定方法
+样本空间$\Omega$   事件域 $\mathcal{F}$
+概率: 对每个事件$A \in \mathcal{F}$, 给了一个数$P(A)$表明$A$的概率
+$P: \mathcal{F} \rightarrow \mathbb{R}$
+满足: 
+1. 非负
+2. 正则 $P(\Omega)=1$
+3. 可列可加性
+ 若$A_1, A_{2}, \ldots \in \mathcal{F}$ , 满足$A_{i} \cap A_{j}=\emptyset$, 只要$i \neq j$
+ 则有$P(\cup_{n=1}^{\infty} A_{n})=\sum_{n=1}^{\infty}P(A_{n})$
+则称$P$是$\Omega$上的一个概率. 
+$(\Omega,\mathcal{F})$叫可测空间
+$(\Omega,\mathcal{F},P)$叫可测空间
+
+推论1: 取$A_{1}=\Omega$, $A_{2}=A_{3}=\ldots=\emptyset$
+则$A_i \cap A_j  = \emptyset, i \neq j$
+$\Longrightarrow P(\cup_{n=1}^{\infty}A_{n})=\sum_{n=1}^{\infty}P(A_{n})$
+$1=1+\sum_{n=2}^{\infty}P(\emptyset)$
+$P(\emptyset)=0$
+推论2: 取$A_{1}=A \in \mathcal{F}$,$A_{2}=\bar{A}$, $A_{3}=A_{4}=\ldots=\emptyset$
+$\cup_{n=1}^{\infty}A_{n}=\Omega$
+$\Longrightarrow 1 = P(\Omega)=P(A)+P(\bar{A})+\sum{P(\emptyset)}$
+$\Longrightarrow P(\bar{A})=1-P(A) \geq 0$
+$\Longrightarrow P(A) \leq 1$
+
+### $(\Omega,\mathcal{F},P)$怎么取?
+- $\Omega$: 所有实验的可能结果, 需要想清楚这个实验是什么
+- $$\mathcal{F}: \begin{cases}
+& \Omega 为有限集或可数集 & \mathcal{F}=\mathcal{P}(\Omega)\\
+& \Omega=\mathbb{R} &\mathcal{F}: Borel集
+\end{cases}$$
+- $P$怎么取
+	- 例子: 抛硬币, 掷骰子
+
+在抛硬币
+	假设$P(正)=P(反)=\frac{1}{2}$
+掷骰子
+	假设P(k)=$\frac{1}{6}$, $k=1,\ldots,6$
+当$\Omega$有限时, 如果没有导致不等概率的因素, 就假设$P(\{\omega\})=\frac{1}{n}$, 其中$\Omega$中点的个数为$n$.
+
+## 频率--->概率
+$$
+P(A)= \frac{n_A}{n}
+$$
+$n$是实验的次数, $n_{A}$是$A$发生的次数
+比如: 英文字母出现的频率
+其他例子: 自己找. (也要结合数据来源来分析)
+
+## 主观概率
+没有任何技术手段可以告诉你概率多少. 在决策问题中, 每一个问题和之前发生的不一样. 需要自己主观给出某个概率. 
+
+频率派 vs 贝叶斯派
+
+频率派: 关心的大量单一可重复事件. 有大数定律支撑.
+
+贝叶斯派: 概率不是客观存在的, 而是通过人们主观不断更新的东西.
+
+Laplace : 太阳照常升起的概率是多少
+Hume: 关于归纳法的循环论证问题
+
+Laplace先规定: $P(升)=\frac{1}{2}$
+贝叶斯公式: 
+$P(升)=\frac{n+1}{n+2}$ $n$是见过太阳升起的次数
+当$n$趋于无穷时, $P(升)$趋于1.
