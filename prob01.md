@@ -31,3 +31,70 @@ $\Omega={\omega_{1},\omega_{2},\dots,\omega_{n}}$
 5. $D=A \cap B \subseteq \Omega$
    $D: A和B都发生$
 6. $\bar{A}=\{\omega \in \Omega | \omega \notin A\}$ 叫A的对立事件
+7. 可数并: $A_{1},A_{2}, \dots.  \subseteq \Omega$, $A=\cup_{n=1}^{\infty}A_{n}=\{ \omega \in \Omega | 存在n \in N, 使得\omega \in A_{n} \}$
+8. 可数交: $B_{1},B_{2}, \dots.  \subseteq \Omega$, $B=\cap_{n=1}^{\infty}B_{n}=\{ \omega \in \Omega | 对任意的n \in N, 有\omega \in B_{n} \}$
+9. $A-B=\{ \omega \in A| \omega \notin B \}$
+10. 对称差: $A \Delta B= (A-B) \cup (B-A)$ 
+    $A$和$B$两个事件有且仅有一个发生.
+	这类似于微积分中的$|x-y|$.
+
+**Q: 为什么允许无穷多个事件去做运算?** 
+之后会学到概率论中两个非常重要的定理: 大数定理以及中心极限定理. 这些定理关心的是**随机变量**的极限. 
+
+Q: 从事件$A$出发, 做什么操作能发生事件$B$. 
+
+Q: 什么是事件? 
+幂集$\mathcal{P}(\Omega)$, 一个集合所有子集构成的集合. 
+定义: $\Omega$是样本空间, $\mathcal{P}(\Omega)$表示$\Omega$的所有子集构成的集合, $\mathcal{F}$ 是$\Omega$的一些子集构成的集合, 这等价于$\mathcal{F} \subseteq \mathcal{P}(\Omega)$. 
+
+若$\mathcal{F}$满足:
+1. $\Omega \in \mathcal{F}$
+2. 若$A \in \mathcal{F}$, 则$\bar{A} \in \mathcal{F}$
+3. 若$A_{1},A_{2},\ldots \in \mathcal{F}$, 则$\cup_{n=1}^{\infty}A_{n} \in \mathcal{F}$ (集合的可数并是封闭的)
+ 则称$\mathcal{F}$是$\Omega$上的一个事件域. ($\sigma-代数$) 
+ $\mathcal{F}$中的一些元素($\Omega$的子集)就称为**事件**. 
+ 
+ 小tips: 一个事件域意味着$\Omega$的事件域可以有很多.
+这类似于讨论线性空间的一组基. 这意味着可以选取不同的基.
+
+集合运算的性质:
+De Morgon's laws
+$\overline{A \cup B} = \bar{A} \cap \bar{B}$
+$\overline{A \cap B} = \bar{A} \cup \bar{B}$
+$\overline{\cup_{n=1}^{\infty}A_{n}}=\cap_{n=1}^{\infty}\bar{A_{n}}$
+$\overline{\cap_{n=1}^{\infty}A_{n}}=\cup_{n=1}^{\infty}\bar{A_{n}}$
+
+有限并和有限交
+取$A_{1}=A$, $A_{2}=B$, $A_{3}=A_{4}=\ldots=\emptyset$
+此时$\cup_{n=1}^{\infty}A_{n}= A \cup B$
+取$B_{1}=A$, $B_{2}=B$, $B_{3}=B_{4}=\ldots=\emptyset$
+此时$\cup_{n=1}^{\infty}B_{n}= A \cup B$
+
+有限并和有限交可以理解为可数并和可数交的一种特殊情形. 
+
+可数并的封闭性可以推出可数交的封闭性(closure). 
+### 当$\Omega = \mathbb{R}$, 如何取$\mathcal{F}$
+- $\Omega \in \mathcal{F}$
+- 把形如$(-\infty,a)$的区间加入$\mathcal{F}$.
+	- 先取补集 $\Longrightarrow$ $[a,\infty) \in \mathcal{F}$
+	- 取$[a,\infty) \cap (-\infty,b)=[a,b) \in \mathcal{F}, a<b$
+	- $[a,b]=\cap_{n=1}^{\infty}[a,b+\frac{1}{n}) \in \mathcal{F}$
+	- $\{b\}=[a,b]-[a,b) \in \mathcal{F}$
+	- $(a,b)=[a,b)-\{a\} \in \mathcal{F}$
+	- 可数个不叫的开区间的并:
+		例子: $\Omega=[0,1]$, 
+		$I_{1}=(\frac{1}{3},\frac{2}{3})$
+		$I_{2}=(\frac{1}{9},\frac{2}{9})$
+		$I_{3}=(\frac{7}{9},\frac{8}{9})$
+		$I=I_{1} \cup I_{2}\cup I_{3}\dots \in \mathcal{F}$
+		$I的长度 =\frac{1}{3}+\frac{2}{9}+\frac{4}{27}+\ldots=1$
+		首项为$\frac{1}{3}$, 公比为$\frac{2}{3}$的等比数列(geometric sequence)
+			$k= \bar{I}$ Cantor集, $k$的长度是0, $k$与$\mathbb{R}$等势. 很短的集合也可以包含非常多的点.
+		
+		补充一下自己混淆的概念:
+		测度与基数.
+		从测度看$|\Omega|$和从集合论看$|\Omega|$ 是不同的.
+		
+		问题: $\mathcal{F}$中的集合长什么样? ---> 描述集合论
+- $\mathcal{F}$ 是一个最小事件域	
+	这称作$\mathbb{R}$的Borel代数
