@@ -111,7 +111,7 @@ $P: \mathcal{F} \rightarrow \mathbb{R}$
  则有$P(\cup_{n=1}^{\infty} A_{n})=\sum_{n=1}^{\infty}P(A_{n})$
 则称$P$是$\Omega$上的一个概率. 
 $(\Omega,\mathcal{F})$叫可测空间
-$(\Omega,\mathcal{F},P)$叫可测空间
+$(\Omega,\mathcal{F},P)$叫概率空间
 
 推论1: 取$A_{1}=\Omega$, $A_{2}=A_{3}=\ldots=\emptyset$
 则$A_i \cap A_j  = \emptyset, i \neq j$
