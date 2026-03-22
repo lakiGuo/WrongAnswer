@@ -118,6 +118,7 @@ $(\Omega,\mathcal{F},P)$叫可测空间
 $\Longrightarrow P(\cup_{n=1}^{\infty}A_{n})=\sum_{n=1}^{\infty}P(A_{n})$
 $1=1+\sum_{n=2}^{\infty}P(\emptyset)$
 $P(\emptyset)=0$
+
 推论2: 取$A_{1}=A \in \mathcal{F}$,$A_{2}=\bar{A}$, $A_{3}=A_{4}=\ldots=\emptyset$
 $\cup_{n=1}^{\infty}A_{n}=\Omega$
 $\Longrightarrow 1 = P(\Omega)=P(A)+P(\bar{A})+\sum{P(\emptyset)}$
