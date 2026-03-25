@@ -76,6 +76,7 @@ $$
 球: 1 到 $N$编号
 
 红: 1 到 $n$ 编号
+
 白: $n+1,\ldots,N$
 ##### Q: 摸$k$次, 不放回, 问有$l$个红的概率
 $\Omega = \{N中的k元排列\}$
@@ -152,3 +153,34 @@ $\Omega_{n}=\Omega^n$
 $\# \Omega=N^n$
 $\#A=N(N-1)\cdots(N-n+1)$
 见birthday_paradox.py文件
+
+### 几何概率
+$P(A)=\frac{m(A)}{m(\Omega)}$
+其中, $m(A)$表示集合$A$的测度, $m(\Omega)$表示样本空间的测度.
+
+[Buffon's needle problem](https://en.wikipedia.org/wiki/Buffon%27s_needle_problem)
+针长$l$, 线间距$d$, 则$d >l$
+问: 相交的概率
+
+假设线是水平且平行的. 关于针的三条信息为: 中点的(x,y)坐标, 以及绕水平方向逆时针旋转的角度$\theta$. 由于平移并不会改变"相交的情况". 所以可以简化信息: 
+$0 \leq y \leq \frac{d}{2}$
+
+$0 \leq \theta \leq\pi$
+
+$\Omega=\{(y,\theta) | 0 \leq y \leq \frac{d}{2}, 0 \leq\theta \leq \pi   \}$
+
+$A= \{(y,\theta) \in \Omega | \frac{y}{\sin\theta} \leq \frac{l}{2}\}$
+
+这里$m(\Omega)$实际上是长为$\pi$, 宽为$\frac{d}{2}$的长方形的面积(这里$\theta$为横轴, $y$为竖轴). 
+
+$P(A)=\frac{m(A)}{m(\Omega)}=\frac{\frac{l}{2}\int^{\pi}_{0}\sin\theta d\vartheta}{\pi \frac{d}{2}}=\frac{2l}{\pi d}$
+
+#### [公平硬币问题](https://www.bilibili.com/video/BV1cZfCBzEev/?share_source=copy_web&vd_source=2ecc986967d3b607a26433a8b2c5a528)
+Yong E H, Mahadevan L. Probability, geometry, and dynamics in the toss of a thick coin[J]. American Journal of Physics, 2011, 79(12): 1195-1201.
+
+如何设计这枚硬币, 使得$正面的概率=反面的概率=侧立的概率$
+$\Omega=[0,\pi]$
+$\theta=\frac{\pi}{3}$
+$D= \sqrt{3}*h$
+![[pic/三面硬币.png]]
+
