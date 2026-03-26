@@ -200,3 +200,116 @@ P应该如何取?
 
 ![圆的随机取弦问题](pic/圆的取弦问题_01.png)
 
+重积分换元
+$$
+\iint_{D} f(x,y)\,dx\,dy
+=
+\iint_{D'} f\bigl(x(u,v),\,y(u,v)\bigr)
+\left|
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+\,du\,dv
+
+$$
+上述不同的几何选取蕴含着不同的Jacobi.
+
+
+## 概率的性质
+$(\Omega,\mathcal{F},P)$
+
+$0 \leq P(A) \leq 1$
+
+$P( \emptyset )=0$
+
+$P( \Omega )=1$
+
+单调性
+若$A \subseteq B$, $A,B \in \mathcal{F}$
+
+则 $P(A) \leq P(B)$
+
+$B=A \cup (B-A)$
+
+$P(B)=P(A)+P(B-A)$
+
+$P(A)=P(B)-P(B-A)$
+
+$P(B-A)=P(B)-P(A)$
+
+对任意 $A,B \in \mathcal{F}$, $P(A \cup B)=P(A)+P(B)-P(A \cap B)$
+$A \cup B = (A-A\cap B)\cup(A \cap B) \cup(B-A\cap B)$
+$P(A \cup B \cup C)=P(A)+P(B)+P(C)-P(A \cap B)-P(B \cap C)-P(C \cap A) + P(A \cap B \cap C)$
+
+#### 例 最大编号问题
+
+袋中有 $1,....,n$ 个球, 随机抽 $m$ 个(有放回), 问: 其中最大编号是$k$的概率?
+##### 方法一
+样本空间 $\Omega=\{1,\dots,n\}^m =\{(x_{1},\ldots,x_{m})| x_{1},\ldots,x_{m} \in \{1,\ldots,n\} \}$. 
+记$A_{k}$是最大编号为$k$的事件, $A_{k,l}$ 表示 $k$ 出现了$l$次.
+$A_{k}=A_{k,1} \cup A_{k,2} \cup \ldots \cup A_{k,m}$
+
+$$P(A_{k,l})=\begin{pmatrix}  
+m \\  
+l  
+\end{pmatrix}(\frac{1}{n})^{l}(\frac{k-1}{n})^{m-l}
+$$
+$$
+\begin{align}
+P(A_{k}) &=\sum_{l=1}^{m} \begin{pmatrix}  
+m \\  
+l  
+\end{pmatrix}(\frac{1}{n})^{l}(\frac{k-1}{n})^{m-l} \\
+&=\sum_{l=0}^{m} \begin{pmatrix}  
+m \\  
+l  
+\end{pmatrix}(\frac{1}{n})^{l}(\frac{k-1}{n})^{m-l}-(\frac{k-1}{n})^{m}
+ \\ 
+&= (\frac{k}{n})^m-(\frac{k-1}{n})^{m}
+\end{align}
+
+
+$$
+
+
+##### 方法二
+记$B_{k}$为最大编号 $\leq k$ 的事件
+$P(B_{k})=(\frac{k}{n})^m$
+
+$A_{k}=B_{k}-B_{k-1}$
+
+容斥原理
+#### 例  装错信封问题
+有 $n$ 封信且有对应的信封, 问 $n$封信都装错的概率. 记$A_{i}$为第$i$封信装对了的事件
+
+$$
+\begin{align}
+P(\overline{A_{1} \cup A_{2} \cup \ldots \cup A_{n}}) &=1-P(A_{1}\cup A_{2}\ldots A_{n} ) \\
+&=1-P(A_{1}) \ldots-P(A_{n}) + \sum_{i<j}P(A_{i} \cap A_{j}) 
+-\sum_{i<j<k}P(A_{i} \cap A_{j}\cap A_{k})+\dots+(-1)^nP(A_{1}\cap \ldots A_{n})
+\end{align}
+$$
+
+$P(A_{1})=\frac{1}{n}$
+
+$P(A_{1} \cap A_{2})=\frac{1}{n}\frac{1}{n-1}$
+
+$P(A_{1} \cap A_{2} \ldots \cap A_{k})=\frac{1}{n(n-1)\ldots(n-k+1)  }$
+
+继续回到上式
+
+$$
+\begin{align}
+P(\overline{A_{1} \cup A_{2} \cup \ldots \cup A_{n}}) &= 1-n* \frac{1}{n}+\begin{pmatrix}  
+n \\  
+2  
+\end{pmatrix}\frac{1}{n(n-1)} -\begin{pmatrix}  
+n \\  
+3  
+	\end{pmatrix}\frac{1}{n(n-1)(n-2)}+ \ldots+(-1)^n\frac{1}{n!}
+ \\
+&=1-1+\frac{1}{2!}-\frac{1}{3!}+\ldots+\frac{(-1)^n}{n}
+\end{align}
+$$
+
+
+
