@@ -311,5 +311,95 @@ n \\
 \end{align}
 $$
 
+连续性: $P: \mathcal{F} \rightarrow \mathbb{R}$ 连续
+
+$$
+f: \mathbb{R} \rightarrow \mathbb{R}, f(\lim_{n \to\infty}a_{n})=\lim_{n \to \infty}f(a_{n})
+$$
+在$\mathcal{F}$上有两种事件的极限
+- $A_{1} \supseteq A_{2} \supseteq A_{3} \supset \ldots$
+则 $$
+\lim_{n \to \infty }A_{n} = \cap_{n=1}^{\infty} A_{n}
+$$
+- $A_{1} \subseteq A_2 \subseteq A_3 \subseteq  \ldots$
+则可以考虑可数并
+$$
+\cup_{n=1}^{\infty} A_{n}
+$$
+
+如果事件越来越“严格”（发生条件越来越多），那么最终同时满足所有条件的概率就是这些 概率逐渐收敛的结果
+$$
+\begin{align}
+P(\cap_{n=1}^{\infty}A_{n}) = \lim_{n=\infty}P(A_{n})
+\end{align}
+$$
+如果不断放宽条件, 让事情越来越容易发生, 那么最终事件发生的概率是这些概率逐渐逼近的结果.
+
+$$
+P(\cup_{n=1}^{\infty}A_{n}) = \lim_{n \to \infty}P(A_n)
+$$
+
+
+## 条件概率
+动机:
+1. 信息更新: 在事件B已经发生的情况下, 事件A的概率 --> Bayes 公式
+2. 分治算法: $\Omega = B_{1}\cup\ldots \cup B_{n}$, 在$B_{k}$的条件下A的概率 --> 全概率公式
+
+
+$$P(A | B) =\frac{P(A \cap B)}{P(B)}=\frac{m(A \cap B)}{m(B)}$$
+
+想象有一幅画面的话, 已知事件B发生, 那么样本空间就是B的区域. 
+
+定理: 
+对于$(\Omega,\mathcal{F},P)$, $B \in \mathcal{F}$. 若 $P(B)>0$, 则   $(\Omega,\mathcal{F},P(\cdot|B))$ 也是概率空间.
+
+#### 例
+1. 已知某家庭有两个孩子, 有一个男孩, 问另一个也是男孩的概率
+计算: $\Omega=\{bb,bg,gb,gg\}$, $B=\{bb,bg,gb\}$, $A=\{bb\}$
+		$P(A|B)= \frac{1}{3}$
+2. $B'=有一个是哥哥$
+	 $A$ 另一个是弟弟的概率?
+计算: $B'=\{bb,bg\}$, $A=\{bb\}$
+		$P(A|B')=\frac{1}{2}$
+3. $\tilde{B}=有一个出生于星期二的男孩$
+	 $A= 另一个也是男孩$
+	1个人的数据: $2*7$种可能
+计算: $\Omega=196(14*14)种可能$
+	 B = ? A=?
+$\#B = 14+14-1=27$
+("是男孩的数量"是14情况的一半)
+$\# A = 7+7-1 =13$
+
+![星期二男孩](pic/星期二男孩_01.png)
+$P=\frac{13}{27}$
+
+#### 例 三门问题
+$C \in \{1,2,3\}$ 车所在的门
+
+$z \in \{1,2,3\}$ 张三选的门
+
+$h \in \{1,2,3\}$ 主持人打开的门
+
+$h \neq z$, $h \neq c$  假设当 $z=c$ 时 $h$随机在两门中选
+
+$$\begin{align}
+\Omega=\{
+&(1,1,2), (1,1,3) ,(1,2,3) ,(1,3,2),\\
+&(2,2,1),(2,2,3),(2,1,3),(2,3,1),\\
+&(3,3,1),(3,3,2),(3,1,2),(3,2,1)
+\}
+\end{align}
+$$
+条件: $z=1$, $h=3$
+$B=\{(1,1,3),(2,1,3)\}$
+
+A: c=1
+$P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{1}{3}$
+$P(\bar{A}|B)=\frac{P(A \cap B)}{P(B)}=\frac{2}{3}$
+
+#### 分治
+$\Omega=B_{1}\cup\ldots\cup B_{n}, B_{k}\cap B_{l}=\emptyset, k\neq l$
+
+$A=\cup_{k=1}^n(A \cap B_{k}), (A \cap B_{k})\cap(A \cap B_{l})=\emptyset$
 
 
