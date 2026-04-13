@@ -147,20 +147,49 @@ $$
 \end{align}
 $$
 
+(2) 根据定义: 
+$$P(X > k) = \sum_{n=k+1}^{\infty} P(X=n)$$
+代入左式得,
+$$
+\begin{align}
+\sum_{k=0}^{\infty}kP(X>k) &= \sum_{k=0}^{\infty}\sum_{n=k+1}^{\infty}k P(X=n)
+\end{align}
+$$
+这里应用Fubini-Tonelli 定理, 对级数求和交换顺序,
+$$
+\begin{align}
+\sum_{k=0}^{\infty}kP(X>k) &= \sum_{n=1}^{\infty}P(X=n)\sum_{k=0}^{n-1} k \\
+&=\sum_{n=1}^{\infty}\left( \frac{n(n-1)}{2} \right)P(X=n) \\
+&=\frac{1}{2}\sum_{n=1}^{\infty}(n^2-n)P(X=n) \\
+&=\frac{1}{2}E(X^2-X) \\
+&=\frac{1}{2}(E(X^2)-E(X))
+\end{align}
+$$
+
 
 
 2.2-21 设X为非负连续随机变量, 若$E(X^n)$存在, 试证明:
 (1) $E(X)=\int^{\infty}_{0}P(X>x)dx$
 (2) $E(X^n)= \int_{0}^{\infty}nx^{n-1}P(X>x)dx$
 证明: 
-(1 ) $$E(X) = \int_{0}^{\infty} x f(x) dx$$
-可以将其改写成, $$E(X) = \int_{0}^{\infty} \left( \int_{0}^{x} 1 dy \right) f(x) dx$$
+(1 ) $$E(X) = \int_{0}^{\infty} x p(x) dx$$
+可以将其改写成, $$E(X) = \int_{0}^{\infty} \left( \int_{0}^{x} 1 dy \right) p(x) dx$$
 其中$0\leq y\leq x$, $0\leq x<\infty$, 接着可以交换积分次序
 $$
 \begin{align}
-E(X) &= \int_{0}^{\infty} \left( \int_{y}^{\infty} f(x) dx \right) dy \\
+E(X) &= \int_{0}^{\infty} \left( \int_{y}^{\infty} p(x) dx \right) dy \\
 &=\int^{\infty}_{0}P(X>y)dy \\
 &=\int^{\infty}_{0}P(X>x)dx
+\end{align}
+$$
+(2) 
+$$
+\begin{align}
+E(X^n) &= \int_{0}^{\infty} x^n p(x) dx \\
+&=\int_{0}^{\infty} \left( \int_{0}^xny^{n-1} dy \right)  p(x) dx \\
+&=\int_{0}^{\infty}ny^{n-1} \left( \int_{y}^{\infty}p(x)dx \right)dy \\
+&= \int_{0}^{\infty}ny^{n-1} P(X>y)dy \\
+&= \int_{0}^{\infty}nx^{n-1}P(X>x)dx
 \end{align}
 $$
 
@@ -173,8 +202,62 @@ ax+bx^2,&0<x<1 \\
 0,&其他
 \end{cases}
 $$
-如果已知$E(x)=0.5$. 试计算$Var(X)$
-to be continued
+如果已知$E(X)=0.5$. 试计算$Var(X)$
 
-2.3-10
-to be continued
+答: 
+利用期望的定义, 算出来$4a+3b=6$. 
+利用概率密度的积分为1:
+$$
+\begin{align}
+\int^{\infty}_{-\infty}p(x) &= 1 \\
+\int_{0}^1 ax+bx^2 dx& =1
+\end{align}
+$$
+得$3a+2b=6$
+解得, $a=6,b=-6$
+$$
+\begin{align}
+E(X^2) &=\int_{0}^1 x^2(ax+bx^2) dx \\
+&=\frac{3}{10}
+\end{align}
+$$
+$Var(X)=E(X^2)-(E(X))^2=\frac{3}{10}-\frac{1}{4}=0.05$
+
+2.3-10 设随机变量$X$仅在区间$[a,b]$上取值, 尝试证明
+$$
+a \leq E(X) \leq b, Var(X)\leq \left( \frac{b-a}{2} \right)^2
+$$
+证明:
+(1)$$\begin{align} 
+ \\E(X) = \int_{-\infty}^{\infty} xp(x) dx
+\end{align}
+$$
+由于$x \in [a,b]$ ,所以$x\geq a$, 由于$p(x)\geq 0$, 对于任意$x \in[a,b]$
+$$
+xp(x) \geq ap(x)
+$$
+两边同时积分
+$$
+\begin{align}
+\int_{a}^bxp(x)dx &\geq a \int_{a}^bp(x)dx =a \\
+E(X) &\geq a
+\end{align}
+$$
+同理, $E(X) \leq b$
+(2) 
+对于任意$c \in \mathbb{R}$,
+$$
+\begin{align}
+E[(X-c)^2]&=E[(X-\mu+\mu-c)^2] \\
+&=E[(X-\mu)^2+2(X-\mu)(\mu-c)+(\mu-c)^2] \\
+&=Var(X)+(\mu-c)^2
+\end{align}
+$$
+所以$E[(X-c)^2] \geq Var(X)$
+令$c=\frac{a+b}{2}$,  由于$X \in [a,b]$, 在端点处, 距离最大,所以
+$$
+\begin{align}
+Var(X) &\leq E\left[ \left( X-\frac{a+b}{2} \right)^2 \right] \\
+& \leq E\left[ \left( \frac{a-b}{2} \right)^2 \right] =\left( \frac{a-b}{2} \right)^2
+\end{align}
+$$
